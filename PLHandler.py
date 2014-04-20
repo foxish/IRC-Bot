@@ -35,7 +35,8 @@ pl_dict = {
     'asm'           : 'Assembly',
     'apl'           : 'APL',
     'ml'            : 'ML',
-    'lua'           : 'Lua' 
+    'lua'           : 'Lua',
+    'golang'        : 'GoLang'
 }
 
 DB_RECORD_TYPE = 'lang'
