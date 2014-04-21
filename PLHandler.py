@@ -66,14 +66,17 @@ class PLHandler(BaseHandler):
             self._handle_priv_msg(sender_nick)
         elif(recipient == self.session.channel):
             self._handle_channel_msg(msg)
-    
-    def _handle_channel_msg(self, msg):
+            
+    def _handle_priv_msg(self, sender_nick):
         global CMD_STAT
-        
         if msg.startswith(CMD_STAT):
             self._display_stats(msg[len(CMD_STAT):])
         else:
-            self._record_reference(msg) #finds the language and records a reference to it in the DB.        
+            self._record_reference(msg) #finds the language and records a reference to it in the DB.   
+    
+    def _handle_channel_msg(self, msg):
+        #self._send_msg(sender_nick, "Did I screw up? :( Tell DarkCthulhu to kill me!")
+        pass     
         
     def _record_reference(self, msg):
         global pl_dict, DB_RECORD_TYPE
@@ -112,9 +115,6 @@ class PLHandler(BaseHandler):
         
     def _show_stats_help(self):
         self._send_msg(self.session.channel, "syntax: !stats <hours> [<language>]")
-        
-    def _handle_priv_msg(self, sender_nick):
-        self._send_msg(sender_nick, "Did I screw up? :( Tell DarkCthulhu to kill me!")
         
     def _send_msg(self, who, msg):
         self.session.send_data("PRIVMSG %s :%s\r\n" % (who, msg))
