@@ -72,11 +72,9 @@ class PLHandler(BaseHandler):
         global CMD_STAT
         if msg.startswith(CMD_STAT):
             self._display_stats(msg[len(CMD_STAT):], sender_nick)
-        else:
-            self._record_reference(msg) #finds the language and records a reference to it in the DB.   
     
     def _handle_channel_msg(self, msg):
-        #self._send_msg(sender_nick, "Did I screw up? :( Tell DarkCthulhu to kill me!")
+        self._record_reference(msg)
         pass
         
     def _record_reference(self, msg):
