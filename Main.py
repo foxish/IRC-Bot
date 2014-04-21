@@ -18,7 +18,7 @@ def process_line(line, handler):
 
 def main():
     RETRYTIMEOUT = 10
-    session = IRCSession("chat.freenode.net", 6667, "no.no.no", "no.no.no", "NoNoNo", "##programming")
+    session = IRCSession("chat.freenode.net", 6667, "noyesnoyesno", "noyesnoyesno", "NoNoNo", "##programming")
     handler = PLHandler(session)
     
     while True:
