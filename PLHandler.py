@@ -65,8 +65,7 @@ class PLHandler(BaseHandler):
         elif(recipient == self.session.nick):
             self._handle_priv_msg(msg, sender_nick)
         elif(recipient == self.session.channel):
-            pass
-            #self._handle_channel_msg(msg)
+            self._handle_channel_msg(msg)
             
     def _handle_priv_msg(self, msg, sender_nick):        
         global CMD_STAT
