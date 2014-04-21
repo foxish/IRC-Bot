@@ -13,12 +13,12 @@ from IRCSession import IRCSession
 from PLHandler import PLHandler
 
 def process_line(line, handler):
-    print(line)
+    #print(line.encode('utf-8'))
     handler.process(line)
 
 def main():
     RETRYTIMEOUT = 10
-    session = IRCSession("chat.freenode.net", 6667, "Xstatbot", "Xstatbot", "DarkCthulhu", "##programming")
+    session = IRCSession("chat.freenode.net", 6667, "Xstatbot", "Xstatbot", "DarkCthulhu", "##whatthefuck")
     handler = PLHandler(session)
     
     while True:

@@ -13,6 +13,8 @@ To fix:
 pl_dict = {
     'cpp'           : 'C++',
     'c++'           : 'C++',
+    'c++11'         : 'C++',
+    'c++0x'         : 'C++',
     'java'          : 'Java',
     'd'             : 'd',
     'c#'            : 'C#',
@@ -36,7 +38,8 @@ pl_dict = {
     'apl'           : 'APL',
     'ml'            : 'ML',
     'lua'           : 'Lua',
-    'golang'        : 'GoLang'
+    'golang'        : 'GoLang',
+    'erlang'        : 'Erlang'
 }
 
 DB_RECORD_TYPE = 'lang'
@@ -73,7 +76,7 @@ class PLHandler(BaseHandler):
         global pl_dict, DB_RECORD_TYPE
         
         for key, value in pl_dict.items():
-            pattern = r'(.*\s+{0}\s+.*|^{0}\s+.*|.*\s+{0}([.,;!].*|$))'.format(re.escape(key))
+            pattern = r'(^{0}$|.*\s+{0}\s+.*|^{0}\s+.*|.*\s+{0}([.,;!].*|$))'.format(re.escape(key))
             result = re.match(pattern, msg.lower())
             if not result is None:
                 self.db.add_entry(DB_RECORD_TYPE, int(time.time()), value)
