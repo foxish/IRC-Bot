@@ -106,7 +106,7 @@ class PLHandler(BaseHandler):
                 self._send_msg(sender_nick, "Number of mentions of {0} in the last {1} hour(s) : {2}".format(cmd_parts[1], cmd_parts[0], db_out))
             
             else:
-                self._show_stats_help()
+                self._show_stats_help(sender_nick)
         except:
             pass
         
@@ -114,8 +114,8 @@ class PLHandler(BaseHandler):
         curr_time = int(time.time())
         return ((curr_time - int(num_hours)*3600, curr_time))
         
-    def _show_stats_help(self):
-        self._send_msg(self.session.channel, "syntax: !stats <hours> [<language>]")
+    def _show_stats_help(self, sender_nick):
+        self._send_msg(sender_nick, "syntax: !stats <hours> [<language>]")
         
     def _send_msg(self, who, msg):
         self.session.send_data("PRIVMSG %s :%s\r\n" % (who, msg))
