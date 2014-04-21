@@ -39,9 +39,10 @@ pl_dict = {
     'ml'            : 'ML',
     'lua'           : 'Lua',
     'golang'        : 'GoLang',
-    'forth'        :  'Forth',
+    'forth'         : 'Forth',
     'golang'        : 'GoLang',
-    'erlang'        : 'Erlang'
+    'erlang'        : 'Erlang',
+    'rust'          : 'Rust'
 }
 
 DB_RECORD_TYPE = 'lang'
