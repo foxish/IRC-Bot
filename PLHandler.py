@@ -63,20 +63,21 @@ class PLHandler(BaseHandler):
         if sender_nick == self.session.nick:
             return
         elif(recipient == self.session.nick):
-            self._handle_priv_msg(sender_nick)
+            self._handle_priv_msg(msg, sender_nick)
         elif(recipient == self.session.channel):
-            self._handle_channel_msg(msg)
+            pass
+            #self._handle_channel_msg(msg)
             
-    def _handle_priv_msg(self, msg):
+    def _handle_priv_msg(self, msg, sender_nick):        
         global CMD_STAT
         if msg.startswith(CMD_STAT):
-            self._display_stats(msg[len(CMD_STAT):])
+            self._display_stats(msg[len(CMD_STAT):], sender_nick)
         else:
             self._record_reference(msg) #finds the language and records a reference to it in the DB.   
     
-    def _handle_channel_msg(self, sender_nick):
+    def _handle_channel_msg(self, msg):
         #self._send_msg(sender_nick, "Did I screw up? :( Tell DarkCthulhu to kill me!")
-        pass     
+        pass
         
     def _record_reference(self, msg):
         global pl_dict, DB_RECORD_TYPE
@@ -88,7 +89,7 @@ class PLHandler(BaseHandler):
                 self.db.add_entry(DB_RECORD_TYPE, int(time.time()), value)
                 #print("Found Entry: {0}".format(value))
                 
-    def _display_stats(self, command):
+    def _display_stats(self, command, sender_nick):
         command = command.strip()
         cmd_parts = command.split(" ")
         now_time = int(time.time())
@@ -97,12 +98,12 @@ class PLHandler(BaseHandler):
             if command != "" and len(cmd_parts) == 1:
                 low_time = (now_time - int(cmd_parts[0])*3600)
                 db_out = str(self.db.get_categories_count(low_time, now_time, 5))
-                self._send_msg(self.session.channel, "Top mentions in the last {0} hour(s) : {1}".format(cmd_parts[0], db_out))
+                self._send_msg(sender_nick, "Top mentions in the last {0} hour(s) : {1}".format(cmd_parts[0], db_out))
             
             elif len(cmd_parts) == 2:
                 low_time = (now_time - int(cmd_parts[0])*3600)
                 db_out = str(self.db.get_category_count(low_time, now_time, cmd_parts[1]))
-                self._send_msg(self.session.channel, "Number of mentions of {0} in the last {1} hour(s) : {2}".format(cmd_parts[1], cmd_parts[0], db_out))
+                self._send_msg(sender_nick, "Number of mentions of {0} in the last {1} hour(s) : {2}".format(cmd_parts[1], cmd_parts[0], db_out))
             
             else:
                 self._show_stats_help()
