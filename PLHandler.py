@@ -39,6 +39,8 @@ pl_dict = {
     'ml'            : 'ML',
     'lua'           : 'Lua',
     'golang'        : 'GoLang',
+    'forth'        :  'Forth',
+    'golang'        : 'GoLang',
     'erlang'        : 'Erlang'
 }
 
