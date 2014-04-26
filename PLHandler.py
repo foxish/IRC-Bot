@@ -43,7 +43,8 @@ pl_dict = {
     'golang'        : 'GoLang',
     'erlang'        : 'Erlang',
     'rust'          : 'Rust',
-    'ocaml'         : 'OCaml'
+    'ocaml'         : 'OCaml',
+    'scala'         : 'Scala'
 }
 
 DB_RECORD_TYPE = 'lang'
