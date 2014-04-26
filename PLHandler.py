@@ -44,7 +44,8 @@ pl_dict = {
     'erlang'        : 'Erlang',
     'rust'          : 'Rust',
     'ocaml'         : 'OCaml',
-    'scala'         : 'Scala'
+    'scala'         : 'Scala',
+    'clojure'       : 'Clojure'
 }
 
 DB_RECORD_TYPE = 'lang'
