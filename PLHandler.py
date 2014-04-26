@@ -42,7 +42,8 @@ pl_dict = {
     'forth'         : 'Forth',
     'golang'        : 'GoLang',
     'erlang'        : 'Erlang',
-    'rust'          : 'Rust'
+    'rust'          : 'Rust',
+    'ocaml'         : 'OCaml'
 }
 
 DB_RECORD_TYPE = 'lang'
